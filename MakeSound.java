@@ -1,5 +1,3 @@
-package main;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -17,10 +15,6 @@ public class MakeSound {
     private AudioInputStream audioStream;
     private AudioFormat audioFormat;
     private SourceDataLine sourceLine;
-
-    public MakeSound() {
-
-    }
 
     /**
      * @param filename the name of the file that is going to be played
@@ -79,6 +73,6 @@ public class MakeSound {
 
     public static void main(String[] args) {
       MakeSound ms = new MakeSound();
-      ms.playSound("disconnect_x.wav");
+      ms.playSound("assets/disconnect_x.wav");
     }
 }
