@@ -9,7 +9,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class MakeSound extends Thread {
+public class SoundPlayer extends Thread {
 
     private final int BUFFER_SIZE = 128000;
     private File soundFile;
@@ -17,15 +17,15 @@ public class MakeSound extends Thread {
     private AudioFormat audioFormat;
     private SourceDataLine sourceLine;
     private String strFileName;
-    
-    public MakeSound(String name) {
+
+    public SoundPlayer(String name) {
     	this.strFileName = name;
     }
 
     public String getStrFileName() {
     	return strFileName;
     }
-    
+
     /**
      * @param filename the name of the file that is going to be played
      */
@@ -77,11 +77,5 @@ public class MakeSound extends Thread {
 
         sourceLine.drain();
         sourceLine.close();
-    }
-    
-    
-
-    public static void main(String[] args) {
-      new MakeSound("beatwav.wav").start();
     }
 }
