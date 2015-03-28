@@ -1,5 +1,5 @@
 clean:
 	rm *.class
 
-soundTest: MakeSound.java
-	javac MakeSound.java && java MakeSound
+soundTest: SoundPlayer.java
+	javac SoundPlayer.java && java SoundPlayer

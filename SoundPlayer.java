@@ -8,7 +8,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class MakeSound {
+public class SoundPlayer {
 
     private final int BUFFER_SIZE = 128000;
     private File soundFile;
@@ -72,7 +72,7 @@ public class MakeSound {
     }
 
     public static void main(String[] args) {
-      MakeSound ms = new MakeSound();
+      SoundPlayer ms = new SoundPlayer();
       ms.playSound("assets/disconnect_x.wav");
     }
 }
