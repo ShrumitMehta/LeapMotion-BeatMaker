@@ -73,6 +73,6 @@ public class SoundPlayer {
 
     public static void main(String[] args) {
       SoundPlayer ms = new SoundPlayer();
-      ms.playSound("assets/disconnect_x.wav");
+      ms.playSound("assets/beatwav.wav");
     }
 }
