@@ -1,3 +1,4 @@
+package main;
 import java.io.File;
 import java.io.IOException;
 
@@ -8,23 +9,30 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class SoundPlayer {
+public class MakeSound extends Thread {
 
     private final int BUFFER_SIZE = 128000;
     private File soundFile;
     private AudioInputStream audioStream;
     private AudioFormat audioFormat;
     private SourceDataLine sourceLine;
+    private String strFileName;
+    
+    public MakeSound(String name) {
+    	this.strFileName = name;
+    }
 
+    public String getStrFileName() {
+    	return strFileName;
+    }
+    
     /**
      * @param filename the name of the file that is going to be played
      */
-    public void playSound(String filename){
-
-        String strFilename = filename;
+    public void run(){
 
         try {
-            soundFile = new File(strFilename);
+            soundFile = new File(getStrFileName());
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -70,9 +78,10 @@ public class SoundPlayer {
         sourceLine.drain();
         sourceLine.close();
     }
+    
+    
 
     public static void main(String[] args) {
-      SoundPlayer ms = new SoundPlayer();
-      ms.playSound("assets/beatwav.wav");
+      new MakeSound("beatwav.wav").start();
     }
 }
