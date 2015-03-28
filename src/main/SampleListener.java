@@ -15,19 +15,17 @@ public class SampleListener extends Listener {
 	public void onFrame(Controller controller) {
 		Frame frame = controller.frame();
 		
-		HandList hands = frame.hands();
-		Hand firstHand = hands.get(0);
-		float x = firstHand.palmPosition().getX();
-		
-		MusicPlayer p = new MusicPlayer();
+		MakeSound p = new MakeSound();
 		
 		for(Gesture gesture : frame.gestures()){
 		    switch (gesture.type()) {
-		    case TYPE_CIRCLE:
+		    case TYPE_SWIPE:
+		    	System.out.println("Exiting");
 		    	System.exit(0);
 		    	break;
 		    case TYPE_KEY_TAP:
-		    	p.play("hihat.wav");
+		    	System.out.println("Drum hit!");
+		    	p.playSound("disconnect_x.wav");
 		    	break;
 		    default:
 		    	System.out.println(gesture.type());

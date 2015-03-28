@@ -10,7 +10,7 @@ public class Sample {
 		
 		controller.addListener(listener);
 		
-		System.out.println("Pres Enter to quit...");
+		System.out.println("Press Enter to quit...");
 		
 		try {
 			System.in.read();
