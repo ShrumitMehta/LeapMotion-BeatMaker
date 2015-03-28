@@ -5,8 +5,8 @@ import com.leapmotion.leap.*;
 public class Application {
 	public static void main(String[] args){
 
-		GestureDetector listener = new GestureDetector();
-		Controller controller 	 = new Controller();
+		GestureController listener = new GestureController();
+		Controller controller = new Controller();
 
 		controller.addListener(listener);
 
