@@ -39,11 +39,13 @@ public class GestureController extends Listener {
 		this.isLooping = false;
 		this.paused = false;
 		this.selected = 0;
-		String[] array = new String[4];
+		String[] array = new String[6];
 		array[0] = "beatwav.wav";
 		array[1] = "guitar.wav";
 		array[2] = "chord.wav";
 		array[3] = "wobble.wav";
+		array[4] = "congo.wav";
+		array[5] = "wobble.wav";
 		this.files = array;
 		this.list = new JList<String>(array);
 		setUpGui();
@@ -104,10 +106,10 @@ public class GestureController extends Listener {
 				
 				if (paused) {
 					loop.setText("Play Loops");
-					player2.setPause(true);
+					player2.setPause(false);
 				} else {
 					loop.setText("Pause Loops");
-					player2.setPause(false);
+					player2.setPause(true);
 				}
 				paused = !paused;
 			}
@@ -166,6 +168,7 @@ public class GestureController extends Listener {
 				System.out.println("Tap");
 				player2 = new SoundPlayer(files[selected]);
 				player2.setLooping(isLooping);
+				player2.setPause(paused);
 				player2.start();
 				break;
 			default:
