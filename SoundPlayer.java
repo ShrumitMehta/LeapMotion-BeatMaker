@@ -43,7 +43,7 @@ public class SoundPlayer extends Thread {
 
 	public void run() {
 
-		if (!pause) {
+		if (looping) {
 			// for (int i = 0; i < 10; i++){
 			while (looping) {
 				if (sourceLine != null && sourceLine.isActive()) {
