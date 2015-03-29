@@ -52,6 +52,7 @@ public class GestureController extends Listener {
 	}
 
 	private void setUpGui() {
+
 		JPanel titlePanel = new JPanel();
 		titlePanel.setSize(jframe.getWidth(), 30);
 		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
@@ -86,7 +87,7 @@ public class GestureController extends Listener {
 		loop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (isLooping) {
 					loop.setText("Loop sounds");
 				} else {
@@ -95,7 +96,7 @@ public class GestureController extends Listener {
 				isLooping = !isLooping;
 			}
 		});
-		
+
 		pause = new JButton("Pause Loops");
 		pane.add(pause);
 		pause.setAlignmentX(JButton.CENTER_ALIGNMENT);
@@ -103,23 +104,32 @@ public class GestureController extends Listener {
 		pause.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (paused) {
-					loop.setText("Play Loops");
-					player2.setPause(false);
+					pause.setText("Play Loops");
+					try {
+						player2.setPause(false);
+					} catch (Exception ex) {
+						
+					}
+					
 				} else {
-					loop.setText("Pause Loops");
-					player2.setPause(true);
+					pause.setText("Pause Loops");
+					try {
+						player2.setPause(true);
+					} catch (Exception ex) {
+						
+					}
 				}
 				paused = !paused;
 			}
 		});
-		
+
 		fileList = new JScrollPane(list);
 		pane.add(fileList);
 		fileList.setAlignmentX(JScrollPane.CENTER_ALIGNMENT);
 		list.setSelectedIndex(selected);
-		
+
 		jframe.setLayout(new BorderLayout());
 		jframe.add(titlePanel, BorderLayout.NORTH);
 		jframe.add(pane, BorderLayout.CENTER);
@@ -159,7 +169,7 @@ public class GestureController extends Listener {
 			case TYPE_SCREEN_TAP:
 				System.out.println("Screen Tap");
 				selected = selected + 1;
-				if (selected >= files.length){
+				if (selected >= files.length) {
 					selected = 0;
 				}
 				list.setSelectedIndex(selected);
