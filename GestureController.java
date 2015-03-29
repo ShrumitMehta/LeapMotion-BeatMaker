@@ -1,21 +1,48 @@
 package main;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.sound.sampled.SourceDataLine;
+import javax.swing.*;
+
 import com.leapmotion.leap.*;
 
+
 /*
- * Handles gesture signals coming from the Leap Motion.
- * */
+	A controller which handles built-in 
+	hand gestures from the LeapMotion.
+*/
 
 public class GestureController extends Listener {
+
+	private Controller controller;
+	private JFrame jframe = new JFrame();
+	private JPanel panel = new JPanel();
+	private JLabel label = new JLabel();
 
 	/* Configure the accepted gesture types. */
 	@Override
 	public void onConnect(Controller controller) {
+		this.controller = controller;
 		System.out.println("Application connected");
 		controller.enableGesture(Gesture.Type.TYPE_SWIPE);
 		controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
 		controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
 		controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
+		label = new JLabel("LeapMotion-BeatMaker");
+		label.setFont(new Font("lrg", Font.BOLD, 30));
+		label.setForeground(Color.BLUE);
+		label.setBackground(Color.BLACK);
+		panel = new JPanel();
+		panel.add(label);
+		panel.setBackground(Color.BLACK);
+		jframe.add(panel);
+		jframe.setBackground(Color.BLACK);
+		jframe.setVisible(true);
+		jframe.setSize(new Dimension(1600,900));
+		jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	/* Act on a captured frame */
@@ -52,7 +79,7 @@ public class GestureController extends Listener {
 			}
 		}
 	}
-
+	
 	/* Map action to a sound */
 	private void determineActionFromFrame(Frame frame) {
 
@@ -87,4 +114,5 @@ public class GestureController extends Listener {
 			}
 		}
 	}
+	
 }

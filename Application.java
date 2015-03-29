@@ -1,5 +1,6 @@
 package main;
 import java.io.IOException;
+
 import com.leapmotion.leap.*;
 
 public class Application {
